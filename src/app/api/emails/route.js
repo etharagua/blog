@@ -14,3 +14,16 @@ export const POST = async (request) => {
         });
     }
 }
+
+export const DELETE = async (request) => {
+    try {
+      await connect();
+      const { correo } = await request.json();
+      await Email.deleteOne({ correo });
+      return NextResponse.json({ message: "Email eliminado" }, { status: 200 });
+    } catch (err) {
+      return new NextResponse("Error eliminando email:" + err, {
+        status: 500,
+      });
+    }
+  };
