@@ -10,7 +10,7 @@ const siteMetadata = {
     siteLogo: "/logo.png",
     socialBanner: "/social-banner.png", // add social banner in the public folder
     email: "eth@aragua.org",
-    github: "https://github.com/ethereumaragua",
+    github: "https://github.com/etharagua",
     twitter: "https://twitter.com/ETHAragua",
     facebook: "https://facebook.com",
     youtube: "https://youtube.com/ETHAragua",
