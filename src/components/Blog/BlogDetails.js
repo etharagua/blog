@@ -5,6 +5,12 @@ import React from "react";
 // import ViewCounter from "./ViewCounter";
 import es from "date-fns/locale/es";
 
+function formatReadingTime(minutes) {
+    // redondear minutos a entero
+    minutes = Math.round(minutes);
+    return `${minutes} ${minutes <= 1 ? "minuto" : "minutos"}` + ` de lectura`;
+}
+
 const BlogDetails = ({ blog, slug: blogSlug }) => {
     return (
         <div className="flex flex-wrap items-center justify-around px-2 py-2 mx-5 text-lg font-medium rounded-lg md:px-10 md:mx-10 sm:text-xl bg-accent dark:bg-accentDark text-light dark:text-dark">
@@ -16,7 +22,9 @@ const BlogDetails = ({ blog, slug: blogSlug }) => {
             {/* <span className="m-3">
                 <ViewCounter slug={blogSlug} />
             </span> */}
-            <div className="m-3">{blog.readingTime.text}</div>
+            <div className="m-3">
+                {formatReadingTime(blog.readingTime.minutes)}
+            </div>
             <Link href={`/categorias/${slug(blog.tags[0])}`} className="m-3">
                 #{slug(blog.tags[0])}
             </Link>

@@ -6,11 +6,12 @@ const siteMetadata = {
     description: "ETH Aragua es una comunidad entusiasta de Ethereum. Este es el blog de ETH Aragua.",
     language: "en-us",
     theme: "system", // system, dark or light
+    homeUrl: "https://aragua.org",
     siteUrl: "https://blog.aragua.org", // your website URL
     siteLogo: "/logo.png",
     socialBanner: "/social-banner.png", // add social banner in the public folder
     email: "eth@aragua.org",
-    github: "https://github.com/etharagua",
+    github: "https://github.com/ETHAragua",
     twitter: "https://twitter.com/ETHAragua",
     facebook: "https://facebook.com",
     youtube: "https://youtube.com/ETHAragua",

@@ -6,13 +6,15 @@ import {
     GithubIcon,
     MoonIcon,
     SunIcon,
-    TwitterIcon,
+    TwitterIcon
 } from "../Icons";
+import { FaGlobe } from 'react-icons/fa';
 import siteMetadata from "@/src/utils/siteMetaData";
 import { useThemeSwitch } from "../Hooks/useThemeSwitch";
 import { useState } from "react";
 import { cx } from "@/src/utils";
 import { FaTelegram } from "react-icons/fa";
+
 
 const Header = () => {
     const [mode, setMode] = useThemeSwitch();
@@ -121,6 +123,14 @@ const Header = () => {
                 </button>
             </nav>
             <div className="items-center hidden sm:flex">
+                <a
+                    href={siteMetadata.homeUrl}
+                    className="inline-block w-6 h-6 mr-4"
+                    target={"_blank"}
+                >
+                    <FaGlobe color={mode === "light" ? '#000000' : '#ffffff'}
+                    size={"1.4em"} className="transition-all duration-200 hover:scale-125 ease" />
+                </a>
                 <a
                     href={siteMetadata.twitter}
                     className="inline-block w-6 h-6 mr-4"

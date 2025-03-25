@@ -6,6 +6,7 @@ import { GithubIcon, TwitterIcon } from "../Icons";
 import { FaTelegram } from "react-icons/fa";
 // import Link from "next/link";
 import siteMetadata from "@/src/utils/siteMetaData";
+import { FaGlobe } from 'react-icons/fa';
 
 const Footer = () => {
     const [success, setSuccess] = React.useState(false);
@@ -88,6 +89,14 @@ const Footer = () => {
     )}
         </div>
             <div className="flex items-center mt-8">
+                <a
+                    href={siteMetadata.homeUrl}
+                    className="inline-block w-6 h-6 mr-4"
+                    target={"_blank"}
+                >
+                    <FaGlobe 
+                    size={"1.4em"} className="transition-all duration-200 hover:scale-125 ease fill-light dark:fill-dark" />
+                </a>
                 <a
                     href={siteMetadata.twitter}
                     className="inline-block w-6 h-6 mr-4"
