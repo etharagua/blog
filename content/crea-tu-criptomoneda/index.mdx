@@ -1,0 +1,386 @@
+---
+title: "Creando tu propia Criptomoneda: Una Guía Educativa Paso a Paso"
+description: "Aprende a crear tu propia criptomoneda paso a paso con herramientas accesibles, sin necesidad de ser programador. Un taller práctico para entender y experimentar con tecnología blockchain desde cero."
+image: "../../public/blogs/5/portada.jpg"
+publishedAt: "2025-04-06"
+updatedAt: "2025-04-06"
+author: "Miguel Rodríguez"
+isPublished: true
+tags:
+    - ethereum
+---
+
+*Descargo de responsabilidad: Este artículo tiene fines exclusivamente educativos y no constituye consejo financiero o de inversión. El mundo de las criptomonedas implica riesgos significativos, y se recomienda realizar investigación adicional antes de comprometer fondos reales.*
+
+## Introducción
+
+El fascinante mundo de la tecnología blockchain y las criptomonedas ha transformado profundamente nuestro panorama financiero y tecnológico. Este artículo busca desmitificar el proceso de creación de una criptomoneda, demostrando que, con las herramientas adecuadas, este conocimiento está al alcance de aquellos que deseen adentrarse en esta revolucionaria tecnología.
+
+## CONCEPTOS BÁSICOS
+
+### Wallet o Billetera Digital:
+
+Las wallets o monederos de criptomonedas funcionan como el puente que nos permite administrar nuestras criptomonedas. Son herramientas de software o hardware que utilizamos para realizar operaciones de recepción y envío a través de la red blockchain de cada criptomoneda.
+
+**Consejo para nuevos usuarios**: Asegúrate de guardar tus claves privadas y frases semilla en un lugar seguro, preferiblemente offline. Nunca las compartas con nadie.
+
+### Token:
+
+Un token es esencialmente una unidad de valor que una organización crea para gobernar su modelo de negocio y dar más poder a sus usuarios para interactuar con sus productos, al tiempo que facilita la distribución y reparto de beneficios entre todos sus accionistas.
+
+**Consejo para nuevos usuarios**: Antes de crear un token, define claramente su propósito y utilidad. Un token sin un caso de uso real difícilmente tendrá valor a largo plazo.
+
+### Smart Contract:
+
+Los smart contracts (contratos inteligentes) son programas informáticos diseñados para ejecutarse automáticamente a medida que las personas o empresas involucradas en un acuerdo van cumpliendo con las cláusulas del mismo.
+
+**Consejo para nuevos usuarios**: Los contratos inteligentes son inmutables una vez implementados en la blockchain. Por ello, es crucial revisar exhaustivamente el código antes de su despliegue.
+
+### Solidity:
+
+Solidity es un lenguaje de tipo estático orientado a objetos (orientado a contratos). Está muy influenciado por Python, C++ y JavaScript, y se ejecuta en la máquina virtual Ethereum (EVM).
+
+**Consejo para nuevos usuarios**: No necesitas ser un programador experto para crear un token. Herramientas como OpenZeppelin Wizard facilitan enormemente el proceso.
+
+## CONOCIENDO EL MUNDO DE LAS CRIPTOMONEDAS
+
+### Importancia de las Criptomonedas en el Mundo Moderno
+
+Las criptomonedas han creado una transformación en el sistema financiero durante los últimos años, imponiéndose como una alternativa descentralizada, segura y con alta trazabilidad para realizar transacciones entre usuarios, permitiendo que personas almacenen y transfieran riqueza sin necesidad de depender de un banco tradicional. Con el paso del tiempo, las criptomonedas han ganado una mayor popularidad, motivadas por las múltiples ventajas que ofrecen, lo que ha permitido el crecimiento exponencial de su mercado y su implementación en sistemas más complejos que han brindado soluciones a problemáticas latentes alrededor del mundo.
+
+Por ejemplo, proyectos como <a href="https://kleros.io" target="_blank" rel="noopener noreferrer">Kleros</a> utilizan tokens y contratos inteligentes para revolucionar el ámbito de la justicia mediante la resolución de disputas en sistemas descentralizados, proporcionando decisiones transparentes y accesibles sin la intervención de intermediarios tradicionales.
+
+### Importancia de la Red Ethereum
+
+Ethereum es una plataforma Blockchain, la cual va más allá de solamente ser una de las criptomonedas más grandes del mundo. En términos generales, su importancia radica en que permite la creación de Smart Contract (Contratos Inteligentes) y dApp (Aplicaciones Descentralizadas), algo que ha revolucionado considerablemente el mundo financiero, los videojuegos y hasta al arte digital, lo que la ha convertido en un pilar fundamental dentro del ecosistema Blockchain.
+
+**Consejo para nuevos usuarios**: Familiarízate con el ecosistema Ethereum antes de crear tu token. Comprender cómo funcionan las gas fees (comisiones) te ahorrará problemas en el futuro.
+
+---
+
+## Ejemplo de Contrato Inteligente de una Criptomoneda
+
+Una parte fundamental de crear tu propia criptomoneda es entender cómo funciona un **contrato inteligente** bajo un **estándar reconocido**. En Ethereum, el más utilizado para tokens es el estándar **ERC-20**.
+
+### ¿Por qué es importante el estándar ERC-20?
+
+El estándar ERC-20 define una serie de reglas que todos los tokens deben seguir para poder interactuar sin problemas con billeteras, exchanges y otras aplicaciones descentralizadas. Gracias a este estándar, tu token puede ser fácilmente reconocido y utilizado por herramientas del ecosistema Ethereum sin necesidad de personalizaciones adicionales.
+
+Algunas de las funciones clave del estándar ERC-20 son:
+
+- `totalSupply`: Devuelve el número total de tokens existentes.
+- `balanceOf`: Muestra cuántos tokens posee una dirección específica.
+- `transfer`: Envía tokens de una cuenta a otra.
+- `approve`: Permite que otra cuenta gaste tokens en tu nombre.
+- `transferFrom`: Realiza una transferencia usando la aprobación previa.
+- `allowance`: Muestra cuánto puede gastar un tercero autorizado.
+
+### Ejemplo de un contrato ERC-20 sencillo
+
+Aquí tienes un ejemplo básico de un contrato que crea un token llamado `MiToken` con el símbolo `MTK` y una emisión inicial de 1000 unidades:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract MiToken is ERC20 {
+    constructor() ERC20("MiToken", "MTK") {
+        _mint(msg.sender, 1000 * 10 ** decimals());
+    }
+}
+```
+
+### ¿Qué hace este contrato?
+
+- **Hereda** el estándar ERC-20 desde OpenZeppelin, lo cual asegura compatibilidad, añade todas las funciones clave del estándar que vimos más arriba y brinda seguridad.
+- Define el nombre y el símbolo del token.
+- Crea 1000 tokens y los asigna al creador del contrato.
+
+Este ejemplo es ideal como punto de partida para cualquier persona interesada en experimentar con la creación de tokens en Ethereum.
+
+Hagamos una implementación usando herramientas reales.
+
+---
+
+## HERRAMIENTAS A UTILIZAR
+
+-   **OpenZeppelin**: Es una plataforma que proporciona herramientas y librerías de código abierto para el desarrollo seguro de contratos inteligentes en Ethereum y otras blockchains. Es ampliamente utilizada por desarrolladores para minimizar riesgos y garantizar la seguridad en sus proyectos. <a href="https://www.openzeppelin.com" target="_blank" rel="noopener noreferrer">Visitar OpenZeppelin</a>
+
+-   **ERC-20**: Es un estándar para la creación de tokens en la blockchain de Ethereum. Define un conjunto de reglas que los tokens deben seguir para garantizar su interoperabilidad con aplicaciones y servicios compatibles. Este estándar ha facilitado la creación de miles de tokens y ha impulsado la adopción de Ethereum como plataforma para proyectos blockchain.
+
+-   **REMIX ETH:** Es un entorno de desarrollo integrado (IDE) basado en la web, diseñado específicamente para crear, probar y desplegar contratos inteligentes en la blockchain de Ethereum. <a href="https://remix.ethereum.org" target="_blank" rel="noopener noreferrer">Acceder a Remix ETH</a>
+
+**Consejo para nuevos usuarios**: Remix ETH permite probar tus contratos en un entorno virtual antes de desplegarlos en la blockchain, ahorrándote costos y potenciales errores.
+
+## CREACIÓN DE UNA CRIPTOMONEDA
+
+### SepoliaETH
+
+Utilizaremos la "Red de Prueba" de Sepolia para el despliegue del Smart Contract que tendrá nuestra Criptomoneda bajo el Estándar ERC-20. Por consiguiente, es importante poseer un saldo positivo en nuestra Wallet.
+
+En este caso, la Wallet que estamos empleando es: "MetaMask". Sin embargo, otras opciones también son válidas.
+
+Puedes descargar MetaMask para tu dispositivo o navegador web desde su página oficial: <a href="https://metamask.io" target="_blank" rel="noopener noreferrer">metamask.io</a>.
+
+Luego, podrás obtener ETH de prueba a través de nuestro faucet de la comunidad en: <a href="https://faucet.aragua.org" target="_blank" rel="noopener noreferrer">faucet.aragua.org</a>.
+
+**Consejo para nuevos usuarios**: Nunca realices pruebas en la red principal (Mainnet) de Ethereum si no estás completamente seguro de lo que haces. Las redes de prueba como Sepolia están diseñadas específicamente para experimentación y aprendizaje.
+
+<Image
+    src="/blogs/5/0.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+### OpenZeppelin Wizard
+
+Existe una forma sumamente rápida, segura y efectiva de crear un "Smart Contract" para una criptomoneda, empleando el estándar ERC-20 en el proceso. Esto puede lograrse mediante el "Wizard" que ofrece OpenZeppelin, quien utilizará su magia para crear tu contrato con las características que elijas: <a href="https://wizard.openzeppelin.com" target="_blank" rel="noopener noreferrer">https://wizard.openzeppelin.com</a>
+
+<Image
+    src="/blogs/5/1.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Primeramente, debemos seleccionar el estándar correspondiente a la creación de Token. En este caso, usaremos el ERC-20:
+
+<Image
+    src="/blogs/5/2.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+La "Barra Lateral" posee una variedad de opciones que dotarán de características especiales a nuestro Token. Por consiguiente, es importante conocerlas a detalle:
+
+-   **Mintable**: Permite que se puedan crear nuevos tokens después de la creación inicial del contrato, lo que es útil para aumentar la oferta si es necesario.
+
+-   **Burnable**: Permite la eliminación de tokens permanentemente, lo que puede ser utilizado para reducir la oferta total de tokens de manera controlada.
+
+-   **Pausable**: Ofrece la opción de detener temporalmente todas las transacciones del token. Es útil para evitar problemas en caso de emergencia.
+
+-   **Callback**: Permite ejecutar acciones adicionales o personalizadas automáticamente cuando ocurren ciertas transacciones.
+
+-   **Permit**: Facilita la aprobación de transacciones mediante firmas digitales realizadas fuera de la cadena, lo que mejora la eficiencia.
+
+-   **Flash Minting**: Permite crear tokens de forma temporal que deben ser devueltos dentro de la misma transacción. Es usado en aplicaciones financieras avanzadas como préstamos rápidos.
+
+**Consejo para nuevos usuarios**: No añadas más funcionalidades de las que realmente necesitas. Cada característica adicional aumenta la complejidad y el costo de gas del contrato.
+
+Al colocar un "Nombre", una "Cantidad" y seleccionar las características que deseemos para nuestra Criptomoneda, se actualizará el Smart Contract automáticamente:
+
+<Image
+    src="/blogs/5/3.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+### Remix ETH
+
+Utilizaremos esta plataforma para el despliegue de nuestro "Smart Contract". Por lo tanto, es importante conocer unos conceptos básicos de la misma.
+
+Los "Smart Contract" los creamos en la carpeta: "contracts". Estos deben llevar la extensión ".sol" al final. En este caso, crearemos: "4_Token.sol", aunque el nombre puede ser sustituido por otro de su preferencia.
+
+<Image
+    src="/blogs/5/4.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Es momento de copiar el "Smart Contract" generado con OpenZeppelin Wizard al archivo recientemente creado.
+
+<Image
+    src="/blogs/5/5.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Podremos desplegarlo fácilmente. Sin embargo, debemos seguir algunos pasos sumamente importantes para garantizar el éxito del procedimiento. Primeramente, el Smart Contract debe compilarse, tal como se muestra en pantalla:
+
+<Image
+    src="/blogs/5/6.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Antes de desplegar un "Smart Contract" dentro de la Blockchain, se recomienda ejecutar despliegue dentro de un entorno local o de pruebas. En este caso, Remix ETH ofrece una de las herramientas más completas para dicho proceso, permitiendo el uso de múltiples cuentas de prueba:
+
+<Image
+    src="/blogs/5/7.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Al momento de hacer el despliegue dentro de Remix ETH, deberemos recibir una confirmación en la consola:
+
+<Image
+    src="/blogs/5/8.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Esto nos permitirá probar manualmente todas las funciones involucradas al momento de dotar nuestro Token con las características seleccionadas:
+
+<Image
+    src="/blogs/5/9.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Por ejemplo, podemos ejecutar la función de "Mint" directamente a una Wallet:
+
+<Image
+    src="/blogs/5/10.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Asimismo, podremos verificar el "Balance" de dicha Wallet:
+
+<Image
+    src="/blogs/5/11.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Para desplegar nuestro "Smart Contract" con nuestra "Wallet" personal, debemos cambiar la Red Local que ofrece Remix ETH a la opción: "Wallet Connect"
+
+<Image
+    src="/blogs/5/12.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Este proceso abrirá una ventana emergente, la cual nos pedirá elegir la Wallet con la que queremos establecer la conexión:
+
+<Image
+    src="/blogs/5/13.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Debemos volver a desplegar el "Smart Contract" con esta opción seleccionada, este proceso nos solicitará una confirmación:
+
+<Image
+    src="/blogs/5/14.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+En este caso, la confirmación puede tardar varios segundos en aparecer. Por consiguiente, es importante tener paciencia:
+
+<Image
+    src="/blogs/5/15.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Presionando "View on Etherscan" podremos abrir directamente el "Explorador de Bloques".
+
+<Image
+    src="/blogs/5/16.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+De la misma manera, podemos importar el Token creado a nuestra Wallet:
+
+<Image
+    src="/blogs/5/17.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Para tal finalidad, solo necesitaremos el "Address" del Smart Contract:
+
+<Image
+    src="/blogs/5/18.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Confirmamos la acción en nuestra Wallet:
+
+<Image
+    src="/blogs/5/19.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+Y tendremos nuestro Token disponible en nuestra Wallet:
+
+<Image
+    src="/blogs/5/20.jpg"
+    width="830"
+    height="404"
+    alt="Image"
+    sizes="100vw"
+/>
+
+## Consideraciones Importantes para Nuevos Usuarios
+
+1. **Seguridad primero**: La seguridad en blockchain es crucial. Un error en un contrato puede resultar en la pérdida de fondos sin posibilidad de recuperarlos.
+
+2. **Costo de despliegue**: Desplegar un contrato en la red principal de Ethereum tiene un costo en ETH. Practica primero en redes de prueba.
+
+3. **Finalidad de las transacciones**: Las transacciones en blockchain son irreversibles. Verifica siempre las direcciones y cantidades antes de confirmar.
+
+4. **Auditorías de código**: Para proyectos serios, considera una auditoría profesional de tu código antes del despliegue.
+
+5. **Aspectos legales**: La creación y distribución de tokens puede estar sujeta a regulaciones según tu jurisdicción. Investiga el marco legal aplicable.
+
+## Conclusión
+
+Crear una criptomoneda es un proceso fascinante que nos permite entender mejor cómo funciona la tecnología blockchain desde adentro. Como hemos visto, lo que antes requería conocimientos avanzados de programación, hoy está al alcance de muchos gracias a herramientas como OpenZeppelin y Remix ETH.
+
+Este artículo busca ser un primer paso en tu viaje educativo por el fascinante mundo de las criptomonedas y contratos inteligentes. Te invitamos a seguir aprendiendo, experimentando en entornos seguros y, sobre todo, a formar parte de esta comunidad que está redefiniendo el futuro de las finanzas y la tecnología.
+
+---
+
+>Recuerda: Este artículo tiene propósitos educativos. La creación de tokens implica riesgos técnicos, financieros y legales. Siempre realiza tu propia investigación y consulta con profesionales antes de involucrarte en proyectos blockchain con fondos reales.
+
+---
+
+>Este artículo fue preparado por ETH Aragua como parte de nuestra misión educativa. Si deseas aprender más sobre Ethereum y blockchain, te invitamos a unirte a nuestros seminarios, cursos y talleres en <a href="https://aragua.org" target="_blank" rel="noopener noreferrer">aragua.org</a>
+
